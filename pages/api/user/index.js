@@ -4,9 +4,7 @@ const useUsers = () => {
   
     const getListDataUsers = async () => {
       try {
-        
         const userToken = localStorage.getItem('userToken');
-        console.log('userToken', userToken);
         const res = await fetch(`${API}/users`, {
           method: 'GET',
           headers: {
@@ -27,8 +25,7 @@ const useUsers = () => {
     const getTotalOfUsers = async () => {
       try {
         const data = await getListDataUsers();
-        console.log('xxx', data);
-        const totalUsers = data.length; // Assuming data is an array of users
+        const totalUsers = data.length;
   
         return totalUsers;
       } catch (error) {
