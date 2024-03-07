@@ -8,7 +8,7 @@ import UserIcon from "../UserIcon";
 import styles from "./Header.module.css";
 import { HiOutlineMenuAlt1 } from "react-icons/hi";
 import Link from "next/link";
-import { headerLoginMenuList, menuList } from "../../data";
+import { headerLoginMenuList, menuList } from "../../components/data";
 
 /*
 

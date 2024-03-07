@@ -1,4 +1,6 @@
-const HeaderSection = ({ heading, subHeading, rightItem = () => {} }) => {
+import React from 'react';
+
+const HeaderSection = ({ heading, subHeading: SubHeading }) => {
   return (
     <header style={{ 
       margin: "20px",
@@ -6,11 +8,10 @@ const HeaderSection = ({ heading, subHeading, rightItem = () => {} }) => {
       alignItems: 'center',
       justifyContent: 'space-between' 
     }}>
-      <div>
+      <div className=' w-auto'>
         <h1 style={{ fontSize: "30px" }}>{heading}</h1>
-        <p>{subHeading}</p>
+        {SubHeading && <SubHeading />}
       </div>
-      {rightItem()}
     </header>
   );
 };

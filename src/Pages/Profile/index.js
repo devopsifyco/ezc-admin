@@ -4,8 +4,7 @@ const Profile = (props) => {
     return (
         <>
             <HeaderSection 
-                heading={'Hello Rizwan'}
-                subHeading={'Lets check your stats today!'}
+                heading={'Lists account users'}
             />
         </>
     );

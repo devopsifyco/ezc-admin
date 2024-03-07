@@ -4,7 +4,6 @@ import Link from "next/link";
 import routes from "../../routes";
 import { useRouter } from "next/router";
 import { TbLogout } from "react-icons/tb";
-import { BiChevronLeft } from "react-icons/bi";
 
 const SidebarNavigation = ({
   sidebarMenuActive,
@@ -21,7 +20,6 @@ const SidebarNavigation = ({
       </button>
       <div className={styles['logo-container']}>
         <Logo />
-        <div className={styles['logo-explain']}>AIO Dashboard</div>
       </div>
       <ul className={styles["sidebar-container"]}>
         {routes.map((page, index) => (

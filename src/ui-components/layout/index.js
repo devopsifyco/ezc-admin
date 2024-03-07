@@ -13,7 +13,7 @@ const Layout = ({ children }) => {
   }, []);
 
   return (
-    <>
+    <div className='blublu font-bold'>
       <SidebarNavigation
         toggleSidebarMenu={toggleSidebarMenu}
         sidebarMenuActive={sidebarMenuActive}
@@ -25,7 +25,7 @@ const Layout = ({ children }) => {
       <section className="content">
         {children}
       </section>
-    </>
+    </div>
   );
 };
 
