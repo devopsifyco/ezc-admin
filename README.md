@@ -1,6 +1,5 @@
-<<<<<<< HEAD
 # ezc-admin
-=======
+
 ## AIO Admin Dashboard
 
 Developed this aio dashboard using nextjs with lots of love.
