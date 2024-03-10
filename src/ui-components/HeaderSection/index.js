@@ -10,7 +10,6 @@ const HeaderSection = ({ heading, subHeading, rightItem = () => {} }) => {
         <h1 style={{ fontSize: "30px" }}>{heading}</h1>
         <p>{subHeading}</p>
       </div>
-      {rightItem()}
     </header>
   );
 };

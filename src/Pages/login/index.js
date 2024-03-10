@@ -10,10 +10,8 @@ const Login = () => {
         <section className={styles["login-container"]}>
           <div className={styles["brand-container"]}>
             <Logo />
-            <div className={styles['logo-explain']}>AIO Dashboard</div>
           </div>
 
-          {/* login form */}
           <div className={styles["form-container"]}>
             <div className="t-center" style={{ margin: "15px 0" }}>
               <div className={styles["sm-brand-container"]}>
