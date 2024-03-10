@@ -1,11 +1,6 @@
-import {
-  IoNotificationsOutline,
-} from "react-icons/io5";
 import DropdownMenu from "../DropdownMenu";
-import IconWrapper from "../IconWrapper";
 import UserIcon from "../UserIcon";
 import styles from "./Header.module.css";
-import { HiOutlineMenuAlt1 } from "react-icons/hi";
 import Link from "next/link";
 import { headerLoginMenuList, menuList } from "../../data";
 
@@ -20,30 +15,6 @@ const MenuList = ({ href = "", Icon = null, text = "" }) => {
   );
 };
 
-const NotificationsIcon = ({ onClick = () => {} }) => (
-  <IconWrapper
-    onClick={onClick}
-    style={{
-      top: "2px",
-      fontSize: "20px",
-    }}
-  >
-    <IoNotificationsOutline />
-  </IconWrapper>
-);
-
-const NotificationList = ({ img = null, desc = "", datetime = "" }) => {
-  return (
-    <li>
-      {img && <img src={img} alt="" />}
-      <div className={styles["single-notification"]}>
-        <p>{desc}</p>
-        <p>{datetime}</p>
-      </div>
-    </li>
-  );
-};
-
 const Header = ({ toggleSidebarMenu }) => {
   return (
     <section className={styles.container}>
@@ -54,7 +25,6 @@ const Header = ({ toggleSidebarMenu }) => {
               className={styles["close-sidemenu"]}
               onClick={toggleSidebarMenu}
             >
-              <HiOutlineMenuAlt1 />
             </button>
           </li>
           <li>
