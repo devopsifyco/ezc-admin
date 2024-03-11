@@ -3,14 +3,25 @@ import Header from "../Header";
 import SidebarNavigation from "../SidebarNavigation";
 
 const Layout = ({ children }) => {
-  const [sidebarMenuActive, setSidebarMenuActive] = useState(true);
+  const isClient = typeof window !== "undefined";
+  const [sidebarMenuActive, setSidebarMenuActive] = useState(() => isClient && window.innerWidth > 768);
 
-  const toggleSidebarMenu = () => setSidebarMenuActive(!sidebarMenuActive);
+  const toggleSidebarMenu = () => setSidebarMenuActive((prevState) => !prevState);
   const showSidebarMenu = () => setSidebarMenuActive(true);
 
   useEffect(() => {
-    setSidebarMenuActive(window.innerWidth > 768 ? true : false);
-  }, []);
+    const handleResize = () => {
+      setSidebarMenuActive(isClient && window.innerWidth > 768);
+    };
+
+    if (isClient) {
+      window.addEventListener("resize", handleResize);
+
+      return () => {
+        window.removeEventListener("resize", handleResize);
+      };
+    }
+  }, [isClient]);
 
   return (
     <>
@@ -18,13 +29,8 @@ const Layout = ({ children }) => {
         toggleSidebarMenu={toggleSidebarMenu}
         sidebarMenuActive={sidebarMenuActive}
       />
-      <Header
-        toggleSidebarMenu={toggleSidebarMenu}
-        showSidebarMenu={showSidebarMenu}
-      />
-      <section className="content">
-        {children}
-      </section>
+      <Header toggleSidebarMenu={toggleSidebarMenu} showSidebarMenu={showSidebarMenu} />
+      <section className="content">{children}</section>
     </>
   );
 };
