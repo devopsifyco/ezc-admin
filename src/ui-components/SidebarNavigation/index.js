@@ -1,10 +1,12 @@
-import Logo from "../Logo";
+import useLogo from "../Logo";
 import styles from "./SidebarNavigation.module.css";
 
 const SidebarNavigation = ({
   sidebarMenuActive,
   toggleSidebarMenu
 }) => {
+
+  const {HomeLogo} = useLogo();
   
   return (
     <section className={`${styles.container} ${sidebarMenuActive ? styles['active'] : ''}`}>
@@ -12,7 +14,7 @@ const SidebarNavigation = ({
         x
       </button>
       <div className={styles['logo-container']}>
-        <Logo />
+        <HomeLogo />
       </div>
     </section>
   );
