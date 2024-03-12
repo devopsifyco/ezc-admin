@@ -1,18 +1,27 @@
-const TOKEN_KEY = 'userToken';
 
-export const login = (token) => {
-  localStorage.setItem(TOKEN_KEY, token);
+export const login = ({ accessToken, refreshToken }) => {
+  try {
+    localStorage.setItem('accessToken', accessToken);
+    localStorage.setItem('refreshToken', refreshToken);
+  } catch (error) {
+    console.error('Error storing tokens:', error);
+  }
 };
 
 export const logout = () => {
-  localStorage.removeItem(TOKEN_KEY);
+  try {
+    localStorage.removeItem('accessToken');
+    localStorage.removeItem('refreshToken');
+  } catch (error) {
+    console.error('Error removing tokens:', error);
+  }
 };
 
 export const isLoggedIn = () => {
   try {
-    return !!localStorage.getItem(TOKEN_KEY);
+    return !!localStorage.getItem('accessToken');
   } catch (error) {
-    console.log(error);
+    console.error('Error checking tokens:', error);
+    return false;
   }
- 
 };

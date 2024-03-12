@@ -1,15 +1,74 @@
+"use client"
+
+import React, {useState} from "react";
 import Link from "next/link";
-import FullButton from "@aio/components/FullButton";
-import Input from "@aio/components/Input";
-import Logo from "@aio/components/Logo";
+import FullButton from "@EZChallenge/components/FullButton";
+import Input from "@EZChallenge/components/Input";
+import useLogo from "@EZChallenge/components/Logo";
 import styles from "./login.module.css";
+import { API } from "pages/api";
+import { useRouter } from "next/router";
+import { login } from "pages/api/auth/login";
+import CircularProgress from '@mui/material/CircularProgress';
+
 
 const Login = () => {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [loading, setLoading] = useState(false);
+
+  const {Logo} = useLogo();
+  const router = useRouter();
+
+  const handleChange = (e) => {
+    const {name, value} = e.target;
+    if (name == 'email') {
+      setEmail(value)
+    } else (
+      setPassword(value)
+    )
+  };
+
+  const handleLogin = async() => {
+    try {
+      setLoading(true);
+      const res = await fetch(`${API}/admin-login`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({email, password})
+      });
+
+      if (res.ok) {
+        const {message, accessToken, refreshToken} = await res.json();
+
+        login({accessToken, refreshToken});
+
+        console.log(message);
+        router.push('/');
+      } else {
+        const err = await res.json();
+        console.log('Login failed: ', err.message);
+
+        if (res.status === 403) {
+          console.log('Unauthorized access to admin page.');
+        }
+      }
+
+    } catch (err) {
+      console.log('Login failed: ', err.message);
+    } finally {
+      setLoading(false);
+    }
+  }
+
   return (
       <div className={styles.container}>
         <section className={styles["login-container"]}>
           <div className={styles["brand-container"]}>
             <Logo />
+            <div className={styles['logo-explain']}>Welcome to EZChallenge</div>
           </div>
 
           <div className={styles["form-container"]}>
@@ -22,10 +81,10 @@ const Login = () => {
             </div>
             <div>
               <Input
-                inputContainerStyle={{ padding: "15px 30px" }}
+                inputContainerStyle={{ padding: "15px 30px", }}
                 type="text"
                 placeholder="Email"
-                onChange={(e) => console.log(e)}
+                onChange={handleChange}
                 name="email"
                 label={"Email"}
               />
@@ -33,11 +92,16 @@ const Login = () => {
                 inputContainerStyle={{ padding: "15px 30px" }}
                 type="password"
                 placeholder="Password"
-                onChange={(e) => console.log(e)}
-                name="email"
-                label={"Email"}
+                onChange={handleChange}
+                name="password"
+                label={"Password"}
               />
-              <FullButton label={"Login"} />
+              <FullButton label={"Login"} onClickHandler={handleLogin} />
+              {loading && (
+                <div className="tc-grey t-center">
+                  <CircularProgress style={{ color: '#216C53'}} />
+                </div>
+              )}
 
               <p className="tc-grey t-center">
                 Dont have an account?{" "}
