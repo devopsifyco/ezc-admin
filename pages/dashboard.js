@@ -1,11 +1,14 @@
-import React from "react";
+
+import Challenge from "src/Pages/challenge";
 import Layout from "../src/ui-components/layout";
-import Dashboard from "../src/Pages/dashboard";
+import middlewareAuth from "src/middleware";
 
-const AdminPage = () => (
-  <Layout>
-    <Dashboard />
-  </Layout>
-);
+const AdminPage = () => {
+  return (
+    <Layout>
+      <Challenge />
+    </Layout>
+  );
+};
 
-export default AdminPage;
+export default middlewareAuth(AdminPage);

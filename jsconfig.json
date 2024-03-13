@@ -2,7 +2,9 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "@aio/components/*": ["src/ui-components/*"]
+      "@EZChallenge/components/*": [
+        "src/ui-components/*"
+      ]
     }
   }
 }
