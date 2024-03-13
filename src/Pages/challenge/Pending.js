@@ -8,7 +8,6 @@ import { AiFillEdit } from "react-icons/ai";
 
 const Pending = () => {
     const { pendingChallenges, handleApprove, handleReject } = useChallenge();
-    console.log('data', pendingChallenges);
 
     return (
         <>

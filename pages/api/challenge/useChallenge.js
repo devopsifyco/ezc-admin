@@ -1,6 +1,8 @@
 import {useState, useEffect} from "react";
 import getAllChallenge from "pages/api/challenge/index.js";
 import { API } from "pages/api";
+import { getCookie } from 'cookies-next';
+
 
 export default function useChallenge () {
 
@@ -23,7 +25,7 @@ export default function useChallenge () {
     const handleApprove = async (challengeID) => {
         try {
             
-            const userToken = localStorage.getItem('accessToken');
+            const userToken = getCookie('accessToken');
             const res = await fetch(`${API}/challenge/approve`, {
                 method: "POST",
                 headers: {
@@ -45,6 +47,7 @@ export default function useChallenge () {
 
     const handleReject = async (challengeID) => {
         try {
+            const userToken = getCookie('accessToken');
             const res = await fetch(`${API}/challenge/reject`, {
                 method: "POST",
                 headers: {

@@ -1,8 +1,10 @@
-const { API } = require("..")
+const { API } = require("..");
+import { getCookie } from 'cookies-next';
+
 
 
 const getAllChallenge = async() => {
-    const userToken = localStorage.getItem('accessToken');
+    const userToken = getCookie('accessToken');
 
     try {
         const res = await fetch(`${API}/challenges`, {
