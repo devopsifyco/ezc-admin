@@ -4,7 +4,7 @@ const useUsers = () => {
   
     const getListDataUsers = async () => {
       try {
-        const userToken = localStorage.getItem('userToken');
+        const userToken = localStorage.getItem('accessToken');
         const res = await fetch(`${API}/users`, {
           method: 'GET',
           headers: {

@@ -2,7 +2,7 @@ const { API } = require("..")
 
 
 const getAllChallenge = async() => {
-    const userToken = localStorage.getItem('userToken');
+    const userToken = localStorage.getItem('accessToken');
 
     try {
         const res = await fetch(`${API}/challenges`, {

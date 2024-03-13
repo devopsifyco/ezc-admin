@@ -1,5 +1,6 @@
 import { FiUser, FiLogOut } from "react-icons/fi";
 import { AiOutlineLogin, AiOutlineLogout } from "react-icons/ai";
+import { logout } from "pages/api/auth/login";
 
 export const menuList = [
   {
@@ -10,7 +11,7 @@ export const menuList = [
   {
     text: "Logout",
     Icon: FiLogOut,
-    href: "logout",
+    handle: () => logout(),
   },
 ];
 
@@ -18,12 +19,14 @@ export const headerLoginMenuList = [
     {
       text: 'Login',
       Icon: AiOutlineLogin,
-      href:'/login'
+      href:'/login',
+
     },
     {
       text: 'Signup',
       Icon: AiOutlineLogout,
-      href: '/signup'
+      href: '/signup',
+
     }
   ]
 

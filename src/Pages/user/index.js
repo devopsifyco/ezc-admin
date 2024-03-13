@@ -7,12 +7,8 @@ export default function ListUsers() {
 
   useEffect(() => {
     const fetchUsers = async () => {
-      try {
-        const userData = await getListDataUsers();
-        setUsers(userData);
-      } catch (error) {
-        console.error('Error fetching user data:', error);
-      }
+      const dataUsers = await getListDataUsers();
+      setUsers(dataUsers);
     };
 
     fetchUsers();

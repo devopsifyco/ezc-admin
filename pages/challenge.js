@@ -1,8 +1,11 @@
-import Layout from "@aio/components/layout";
+import Layout from "@EZChallenge/components/layout";
 import Challenge from "src/Pages/challenge";
+import middlewareAuth from "src/middleware";
 
-export default () => (
+const ChallengePage = () => (
   <Layout>
     <Challenge />
   </Layout>
 );
+
+export default middlewareAuth(ChallengePage);

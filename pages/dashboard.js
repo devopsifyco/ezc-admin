@@ -1,23 +1,14 @@
-import React, { useEffect } from "react";
+
+import Challenge from "src/Pages/challenge";
 import Layout from "../src/ui-components/layout";
-import Dashboard from "../src/Pages/dashboard";
-import { useRouter } from "next/router";
-import { isLoggedIn } from "./api/auth/login";
+import middlewareAuth from "src/middleware";
 
 const AdminPage = () => {
-  const router = useRouter();
-
-  useEffect(() => {
-    if (!isLoggedIn()) {
-      router.push('/login');
-    }
-  }, [router]);
-
   return (
     <Layout>
-      <Dashboard />
+      <Challenge />
     </Layout>
   );
 };
 
-export default AdminPage;
+export default middlewareAuth(AdminPage);

@@ -23,7 +23,7 @@ export default function useChallenge () {
     const handleApprove = async (challengeID) => {
         try {
             
-            const userToken = localStorage.getItem('userToken');
+            const userToken = localStorage.getItem('accessToken');
             const res = await fetch(`${API}/challenge/approve`, {
                 method: "POST",
                 headers: {

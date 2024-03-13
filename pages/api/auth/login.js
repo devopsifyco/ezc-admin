@@ -1,8 +1,9 @@
+import { getCookie, setCookie, deleteCookie } from 'cookies-next';
 
 export const login = ({ accessToken, refreshToken }) => {
   try {
-    localStorage.setItem('accessToken', accessToken);
-    localStorage.setItem('refreshToken', refreshToken);
+    setCookie('accessToken', accessToken);
+    setCookie('refreshToken', refreshToken);
   } catch (error) {
     console.error('Error storing tokens:', error);
   }
@@ -10,8 +11,8 @@ export const login = ({ accessToken, refreshToken }) => {
 
 export const logout = () => {
   try {
-    localStorage.removeItem('accessToken');
-    localStorage.removeItem('refreshToken');
+    deleteCookie('accessToken');
+    deleteCookie('refreshToken');
   } catch (error) {
     console.error('Error removing tokens:', error);
   }
@@ -19,7 +20,9 @@ export const logout = () => {
 
 export const isLoggedIn = () => {
   try {
-    return !!localStorage.getItem('accessToken');
+    
+    return !!getCookie('accessToken');
+
   } catch (error) {
     console.error('Error checking tokens:', error);
     return false;

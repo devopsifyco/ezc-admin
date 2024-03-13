@@ -4,10 +4,10 @@ import styles from "./Header.module.css";
 import Link from "next/link";
 import { headerLoginMenuList, menuList } from "../../data";
 
-const MenuList = ({ href = "", Icon = null, text = "" }) => {
+const MenuList = ({ href = "", Icon = null, text = "", handle = null }) => {
   return (
-    <li>
-      <Link href={href} className={styles["link"]}>
+    <li >
+      <Link href={href} className="flex flex-row gap-2 items-center" onClick={handle}>
         {Icon && <Icon />}
         <span>{text}</span>
       </Link>
@@ -38,18 +38,19 @@ const Header = ({ toggleSidebarMenu }) => {
         <ul className={styles["header-navigations"]}>
 
           <li>
-            <DropdownMenu label={"Login/Signup"}>
-              <ul className={styles["dropdown-menu"]}>
-                {headerLoginMenuList.map((menu, index) => (
+          <DropdownMenu label={"Login/Signup"}>
+            <ul className="pl-4 pt-2 font-bold">
+              {headerLoginMenuList.map((menu, index) => (
+                <div key={index}>
                   <MenuList
-                    key={index} 
                     text={menu.text}
                     Icon={menu.Icon}
                     href={menu.href}
                   />
-                ))}
-              </ul>
-            </DropdownMenu>
+                </div>
+              ))}
+            </ul>
+          </DropdownMenu>
           </li>
 
           <li>
@@ -57,13 +58,14 @@ const Header = ({ toggleSidebarMenu }) => {
               label={"Dropdown 1"}
               CustomMenu={UserIcon}
             >
-              <ul className={styles["dropdown-menu"]}>
+              <ul className="pl-4 pt-2 font-bold">
                 {menuList.map((menu, index) => (
                   <MenuList
                     key={index}
                     text={menu.text}
                     Icon={menu.Icon}
                     href={menu.href}
+                    handle={menu.handle}
                   />
                 ))}
               </ul>
