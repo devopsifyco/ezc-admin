@@ -1,12 +1,11 @@
-
-import Challenge from "src/Pages/challenge";
 import Layout from "../src/ui-components/layout";
 import middlewareAuth from "src/middleware";
+import Dashboard from "src/Pages/dashboard";
 
 const AdminPage = () => {
   return (
     <Layout>
-      <Challenge />
+      <Dashboard />
     </Layout>
   );
 };

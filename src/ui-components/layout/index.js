@@ -30,7 +30,7 @@ const Layout = ({ children }) => {
         sidebarMenuActive={sidebarMenuActive}
       />
       <Header toggleSidebarMenu={toggleSidebarMenu} showSidebarMenu={showSidebarMenu} />
-      <section className="content">{children}</section>
+      <section className="content p-8">{children}</section>
     </>
   );
 };
