@@ -16,6 +16,7 @@ const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
+  const [message, setMessage] = useState('');
 
   const {Logo} = useLogo();
   const router = useRouter();
@@ -44,20 +45,20 @@ const Login = () => {
         const {message, accessToken, refreshToken} = await res.json();
 
         login({accessToken, refreshToken});
+        setMessage(message);
 
-        console.log(message);
         router.push('/');
       } else {
         const err = await res.json();
-        console.log('Login failed: ', err.message);
+        setMessage(err.message);
 
         if (res.status === 403) {
-          console.log('Unauthorized access to admin page.');
+          setMessage('Unauthorized access to admin page', )
         }
       }
 
     } catch (err) {
-      console.log('Login failed: ', err.message);
+      setMessage(err.message);
     } finally {
       setLoading(false);
     }
@@ -97,10 +98,14 @@ const Login = () => {
                 label={"Password"}
               />
               <FullButton label={"Login"} onClickHandler={handleLogin} />
-              {loading && (
+              {loading ? (
                 <div className="tc-grey t-center">
                   <CircularProgress style={{ color: '#216C53'}} />
                 </div>
+              ) : (
+                message && (
+                  <div style={{ color: 'red', padding: "15px 30px" }}>{message}</div>
+                )
               )}
 
               <p className="tc-grey t-center">
