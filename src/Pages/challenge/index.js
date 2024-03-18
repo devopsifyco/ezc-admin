@@ -4,11 +4,11 @@ import Reject from "./Reject";
 
 const Challenge = (props) => {
   return (
-    <>
+    <div>
       <Pending />
       <Approve />
       <Reject />
-    </>
+    </div>
   );
 };
 
