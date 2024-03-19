@@ -10,6 +10,8 @@ import { API } from "pages/api";
 import { useRouter } from "next/router";
 import { login } from "pages/api/auth/login";
 import CircularProgress from '@mui/material/CircularProgress';
+import { setCookie } from 'cookies-next';
+
 
 
 const Login = () => {
@@ -17,6 +19,7 @@ const Login = () => {
   const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState('');
+  const [messageSuccess, setMessageSuccess] = useState('');
 
   const {Logo} = useLogo();
   const router = useRouter();
@@ -43,9 +46,10 @@ const Login = () => {
 
       if (res.ok) {
         const {message, accessToken, refreshToken} = await res.json();
+        setCookie('email', email);
 
         login({accessToken, refreshToken});
-        setMessage(message);
+        setMessageSuccess(message);
 
         router.push('/');
       } else {
@@ -107,11 +111,9 @@ const Login = () => {
                   <div style={{ color: 'red', padding: "15px 30px" }}>{message}</div>
                 )
               )}
-
-              <p className="tc-grey t-center">
-                Dont have an account?{" "}
-                <Link className="link" href={`/signup`}>Signup for free</Link>
-              </p>
+              {messageSuccess && (
+               <div style={{ color: 'green', padding: "15px 30px", fontWeight: 'bold' }}>{messageSuccess}</div>
+              )}
             </div>
           </div>
         </section>

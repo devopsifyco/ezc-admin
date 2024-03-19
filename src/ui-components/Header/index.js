@@ -2,7 +2,7 @@ import DropdownMenu from "../DropdownMenu";
 import UserIcon from "../UserIcon";
 import styles from "./Header.module.css";
 import Link from "next/link";
-import { headerLoginMenuList, menuList } from "../../data";
+import { menuList } from "../../data";
 
 const MenuList = ({ href = "", Icon = null, text = "", handle = null }) => {
   return (
@@ -15,7 +15,7 @@ const MenuList = ({ href = "", Icon = null, text = "", handle = null }) => {
   );
 };
 
-const Header = ({ toggleSidebarMenu }) => {
+const Header = () => {
   return (
     <section className={styles.container}>
       <div className="flex items-center justify-center rounded-lg bg-orange-800 border border-zinc-800">
@@ -32,22 +32,6 @@ const Header = ({ toggleSidebarMenu }) => {
       </div>
       <div className={styles["right-items"]}>
         <ul className={styles["header-navigations"]}>
-
-          <li>
-          <DropdownMenu label={"Login/Signup"}>
-            <ul className="pl-4 pt-2 font-bold">
-              {headerLoginMenuList.map((menu, index) => (
-                <div key={index}>
-                  <MenuList
-                    text={menu.text}
-                    Icon={menu.Icon}
-                    href={menu.href}
-                  />
-                </div>
-              ))}
-            </ul>
-          </DropdownMenu>
-          </li>
 
           <li>
             <DropdownMenu
