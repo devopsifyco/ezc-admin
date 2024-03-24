@@ -3,7 +3,7 @@ import { API } from '..';
 import { getCookie } from 'cookies-next';
 
 
-export default function useGift() {
+export default function useDonate() {
   const [donationHistory, setDonationHistory] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);

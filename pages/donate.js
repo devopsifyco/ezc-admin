@@ -1,11 +1,11 @@
-import GiftPage from "src/Pages/gift";
 import Layout from "@EZChallenge/components/layout";
+import DonatePage from "src/Pages/donate";
 import middlewareAuth from "src/middleware";
 
-const Gift = () => (
+const Donate = () => (
   <Layout>
-    <GiftPage />
+    <DonatePage />
   </Layout>
 );
 
-export default middlewareAuth(Gift);
+export default middlewareAuth(Donate);
