@@ -1,4 +1,4 @@
-import { IoHomeOutline } from "react-icons/io5";
+import { IoHomeOutline, IoGift } from "react-icons/io5";
 import { BsSpeedometer2 } from "react-icons/bs";
 import { BiUserCircle } from "react-icons/bi";
 
@@ -18,4 +18,9 @@ export default [
     name: "Challenges",
     Icon: BsSpeedometer2,
   },
+  {
+    to: "/gift",
+    name: "Gifts",
+    Icon: IoGift,
+  }
 ];
