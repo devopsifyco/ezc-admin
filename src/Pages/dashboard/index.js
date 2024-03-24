@@ -8,8 +8,6 @@ export default function Dashboard() {
   const { getTotalOfUsers } = useUsers();
   const [totalChallenges, setTotalChallenges] = useState(0);
   const [totalUsers, setTotalUsers] = useState(0);
-  const [userPercentage, setUserPercentage] = useState(0);
-  const [challengePercentage, setChallengePercentage] = useState(0);
 
   useEffect(() => {
     const fetchChallenges = async () => {
@@ -34,28 +32,17 @@ export default function Dashboard() {
     fetchTotalUsers();
   }, [getTotalOfUsers]);
 
-  useEffect(() => {
-    if (totalUsers > 0) {
-      setUserPercentage(parseFloat(((totalUsers / 1000) * 100).toFixed(2))); // Example 1000 is total of users
-    }
-    if (totalChallenges > 0) {
-      setChallengePercentage(parseFloat(((totalChallenges / 100) * 100).toFixed(2))); // 100 is total of challenges
-    }
-  }, [totalUsers, totalChallenges]);
-
   return (
     <>
       <Section>
         <DataCard
           label={"Total User"}
           value={totalUsers?.toString() || ''}
-          percentageValue={userPercentage}
           inverse={true}
         />
         <DataCard
           label={"Total Challenge"}
           value={totalChallenges.toString()}
-          percentageValue={challengePercentage}
           inverse={true}
         />
       </Section>
