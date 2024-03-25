@@ -1,6 +1,6 @@
 import { IoHomeOutline } from "react-icons/io5";
 import { BsSpeedometer2 } from "react-icons/bs";
-import { BiUserCircle, BiPointer } from "react-icons/bi";
+import { BiUserCircle, BiPointer, BiDonateHeart } from "react-icons/bi";
 
 export default [
   {
@@ -20,7 +20,7 @@ export default [
   },
   {
     to: "/donate",
-    name: "Donate",
-    Icon: BiPointer,
+    name: "Donations",
+    Icon: BiDonateHeart,
   }
 ];

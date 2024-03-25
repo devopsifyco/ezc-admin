@@ -1,4 +1,4 @@
-import useDonate from 'pages/api/gift/useGilf';
+import useDonate from 'pages/api/donate/useDonate';
 import React from 'react';
 import { FiClock } from "react-icons/fi";
 
