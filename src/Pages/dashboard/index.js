@@ -39,11 +39,13 @@ export default function Dashboard() {
           label={"Total User"}
           value={totalUsers?.toString() || ''}
           inverse={true}
+          href={"/user"}
         />
         <DataCard
           label={"Total Challenge"}
           value={totalChallenges.toString()}
           inverse={true}
+          href={"/challenge"}
         />
       </Section>
     </>

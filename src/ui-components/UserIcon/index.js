@@ -1,15 +1,27 @@
-import Image from "next/image";
 import styles from "./UserIcon.module.css";
+import useProfile from "pages/api/profile";
 
 const UserIcon = ({ onClick = () => {} }) => {
+  const { profileData } = useProfile();
+  console.log(profileData);
+
   return (
     <div onClick={onClick} className={styles.container}>
-      <Image
-        src={`/profile-user.png`}
-        alt="User Profile Image"
-        width={40}
-        height={40}
-      />
+       {profileData && profileData.avatar && profileData.avatar.downloadLink ? (
+        <img
+          src={profileData.avatar.downloadLink}
+          alt="User Profile image"
+          width={40}
+          height={40}
+        />
+      ) : (
+        <img
+          src={`/profile-user.png`}
+          alt="Default User Profile image"
+          width={40}
+          height={40}
+        />
+      )}
     </div>
   );
 };
