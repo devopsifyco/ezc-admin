@@ -1,3 +1,4 @@
+import { useRouter } from "next/router";
 import styles from "./style.module.css";
 import { FaUserAlt } from "react-icons/fa";
 
@@ -7,12 +8,23 @@ const DataCard = ({
   percentageValue = null,
   Icon = null,
   inverse = null,
+  href = null,
 }) => {
+
+  const router = useRouter();
+  const handleClick = () => {
+    if (href) {
+      router.push(href);
+    }
+  }
+
   return (
     <div
       className={`${styles["data-container"]} ${
         inverse ? styles["inverse"] : ""
       }`}
+      onClick={handleClick}
+      style={{ cursor: href ? 'pointer' : 'default' }}
     >
       <div className={styles["data-row"]}>
         {label && <p>{label}</p>}

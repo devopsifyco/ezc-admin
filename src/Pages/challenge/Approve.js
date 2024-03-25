@@ -2,6 +2,7 @@ import getAllChallenge from "pages/api/challenge/index.js";
 import { useEffect, useState } from "react";
 import { FiMapPin, FiStar, FiHome, FiCalendar } from "react-icons/fi";
 import { AiFillEdit } from "react-icons/ai";
+import { useRouter } from "next/router";
 
 export const formatDateTime = (time) => {
     const dateObject = new Date(time);
@@ -17,7 +18,12 @@ export const formatDateTime = (time) => {
 };
 
 const Approve = () => {
+    const router = useRouter();
     const [approveChallenges, setApproveChallenges] = useState([]);
+
+    const handleChallengeDetail = (id) => {
+        router.push(`/detail/${id}`);
+    };
 
     useEffect(() => {
         const getData = async () => {
@@ -40,7 +46,7 @@ const Approve = () => {
             <h1 className="text-3xl text-lime-500 font-bold">Approved</h1>
             <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-4'>
                 {approveChallenges.map(challenge => (
-                    <div key={challenge._id} className='border border-gray-300 p-4 rounded-md'>
+                    <div key={challenge._id} className='border border-gray-300 p-4 rounded-md cursor-pointer' onClick={() => handleChallengeDetail(challenge._id)}>
                         <h2 className='text-xl font-bold mb-2'>{challenge.title}</h2>
                         {
                             challenge.images_path.length > 0 && (

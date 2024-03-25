@@ -4,17 +4,22 @@ import useChallenge from "pages/api/challenge/useChallenge";
 import { formatDateTime } from "./Approve";
 import { FiMapPin, FiStar, FiHome, FiCalendar } from "react-icons/fi";
 import { AiFillEdit } from "react-icons/ai";
-
+import { useRouter } from "next/router";
 
 const Pending = () => {
     const { pendingChallenges, handleApprove, handleReject } = useChallenge();
+    const router = useRouter();
+
+    const handleChallengeDetail = (id) => {
+        router.push(`/detail/${id}`);
+    };
 
     return (
         <>
         <h1 className="text-3xl text-gray-500 font-bold">Pending</h1>
         <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-4'>
             {pendingChallenges.map(challenge => (
-                <div key={challenge._id} className='border border-gray-300 p-4 rounded-md'>
+                <div key={challenge._id} className='border border-gray-300 p-4 rounded-md cursor-pointer' onClick={() => handleChallengeDetail(challenge._id)}>
                     <h2 className='text-xl font-bold mb-2'>{challenge.title}</h2>
                     {
                         challenge.images_path.length > 0 && (
