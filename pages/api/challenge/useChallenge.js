@@ -34,7 +34,6 @@ export default function useChallenge () {
                 },
                 body: JSON.stringify({ id: challengeID })
             });
-            console.log('ID nef: ',challengeID);
 
             getData();
             const status = await res.json();
