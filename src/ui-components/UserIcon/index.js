@@ -3,7 +3,6 @@ import useProfile from "pages/api/profile";
 
 const UserIcon = ({ onClick = () => {} }) => {
   const { profileData } = useProfile();
-  console.log(profileData);
 
   return (
     <div onClick={onClick} className={styles.container}>

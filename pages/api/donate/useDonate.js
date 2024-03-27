@@ -12,7 +12,6 @@ export default function useDonate() {
     const fetchData = async () => {
       try {
         const token = getCookie('accessToken');
-        console.log(token);
         const response = await fetch(`${API}/donation/all`, {
           method: 'GET',
           headers: {
