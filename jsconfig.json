@@ -1,0 +1,10 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@EZChallenge/components/*": [
+        "src/ui-components/*"
+      ]
+    }
+  }
+}
